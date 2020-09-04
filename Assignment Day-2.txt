@@ -1,0 +1,24 @@
+//1.Program to search for a particular character in a string
+
+let str="Hello, how are you?";
+console.log("Found at position "+str.indexOf("o"));
+
+//2.Program to convert minute to seconds
+
+let mins=5;
+console.log(mins+" minutes to seconds is "+mins*60);
+
+//3.Program to search for an element in an array of strings
+
+let arr=["Hai","Hello","Fine","Bye"];
+console.log("Found at position "+arr.indexOf("Fine"));
+
+//4.Program to display only elemets containing 'a' in them from an array
+
+let arr2=["Summer","Winter","Spring","Autumn"];
+console.log("Found at position "+arr2.findIndex(element=>element.includes("er")));
+
+//5.Print array in reverse order
+
+let arr3=["You?","Are","How"];
+console.log(arr3.reverse());
