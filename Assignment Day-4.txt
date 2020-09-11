@@ -1,0 +1,152 @@
+
+***********************************QUESTION-1****************************************
+----------------------------------HTML-CODE-1----------------------------------------
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Image</title>
+</head>
+<body>
+    <script src="q1.js"></script>
+    <img src="https://i.pinimg.com/originals/b9/5f/e1/b95fe1436747d15a5f7152a2ecdf3eff.jpg" alt="" 
+        width="400"
+        id="image">
+    <br>
+    <button id="b1" onclick="revertImg()">Revert</button>
+    <button id="b2" onclick="changeImg1()">Change Image</button>
+    <button id="b3" onclick="changeImg2()">Change Again</button>    
+</body>
+</html>
+
+----------------------------------JS-CODE-1-------------------------------------------
+
+function revertImg()
+{
+    const i=document.getElementById("image");
+    const newUrl="https://i.pinimg.com/originals/b9/5f/e1/b95fe1436747d15a5f7152a2ecdf3eff.jpg";
+    i.src=newUrl;
+}
+function changeImg1()
+{
+    const i=document.getElementById("image");
+    const newUrl="https://imgd.aeplcdn.com/600x337/n/cw/ec/41406/bmw-8-series-right-front-three-quarter8.jpeg?q=85"
+    i.src=newUrl;
+}
+function changeImg2()
+{
+    const i=document.getElementById("image");
+    const newUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQPT7m6kmEYVDpivSpwKEBvUEA0oSAoevW11w&usqp=CAU"
+    i.src=newUrl;
+}
+
+
+
+***********************************QUESTION-2*************************************
+-----------------------------------HTML CODE-2-------------------------------------
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input</title>
+</head>
+<body>
+    <script src="q2.js"></script>
+    <input type="text" id="first" placeholder="Enter name"/>
+    <br>
+    <input type="text" id="second"/>
+    <br>
+    <button onclick=copy()>Enter</button>
+</body>
+</html>
+
+-----------------------------------JS-CODE-2----------------------------------------
+function copy()
+{
+    const p=document.getElementById("first").value;
+    document.getElementById("second").value=p;
+
+}
+
+
+
+*********************************QUESTION-3************************************
+---------------------------------HTML-CODE-3-------------------------------------
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="q3.js"></script>
+
+</body>
+</html>
+
+
+---------------------------------JS-CODE-3-------------------------------------
+
+let Participants=[
+    {
+        name:"Ashwin",
+        age:"21",
+        country:"India",
+        hobbies:["Singing","Reading"]
+    },
+    {
+        name:"Ben",
+        age:"19",
+        country:"UK",
+        hobbies:["Reading","Drawing"]
+    },
+    {
+        name:"Hrithik",
+        age:"30",
+        country:"India",
+        hobbies:["Gardening","Drawing"]
+    },
+    {
+        name:"Rahul",
+        age:"31",
+        country:"Australia",
+        hobbies:["Drawing","Singing"]
+    }
+];
+
+// displaying objects
+
+for(let i=0;i<=3;i++)
+{
+    console.log(Participants[i]);
+}
+
+
+
+*******************************QUESTION-4*****************************
+-------------------------------JS-CODE-4-------------------------------
+
+
+// Q4-objects with age less than 30
+
+
+for(let i=0;i<=3;i++)
+{   if(Participants[i].age<30)
+        console.log(Participants[i]);
+}
+
+
+// q4-display objects with country India
+
+
+for(let i=0;i<=3;i++)
+{   if(Participants[i].country=="India")
+        console.log(Participants[i]);
+}
+
