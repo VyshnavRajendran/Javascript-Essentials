@@ -1,0 +1,377 @@
+***********************************Question-1*****************************************
+-----------------------------------HTML-Code-1----------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q-1</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        .data{
+            height: 500px;
+            width: 80%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin-left: 10%;
+            margin-top: 50px;
+            padding: 20px;
+            display: inline-block;
+        }
+        .table{
+            width: 100%;
+            margin-top: 20px;
+        }
+        th,td{
+            height:40px ;
+            text-align: center;
+            padding: 10px;
+        }
+        th{
+            background-color: lightgreen;
+        }
+        button{
+            padding: 10px;
+        }
+        h1{
+            background:#09C709;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+        .form{
+            padding: 10px;
+        }
+        input{
+            border-width: 5px;
+            border-color: lightgreen;
+            height: 20px;
+            text-indent: 20px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="data">
+
+        <h1>Employee Details</h1>
+
+        <div class="form">
+            <input 
+                type="text"
+                placeholder="Search By Name"
+                onkeyup="searchbyname()"
+                id=searchbyname>
+            <input 
+                type="text"
+                placeholder="Search By City"
+                onkeyup="searchbycity()"
+                id=searchbycity>
+        </div>
+
+        <table border="1" class="table" cellspacing=0>
+            <thead>
+                <tr>
+                    <th>Sl no.</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>City</th>
+                    <th>Salary</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="tdata">
+
+            </tbody>
+        </table>
+    </div>
+    <script src="q1.js"></script>
+</body>
+</html>
+
+----------------------------------JS CODE-1----------------------------------------
+
+let employees=[
+    {
+        name:"Ashwin",
+        age:23,
+        city:"Bangalore",
+        salary:35000
+    },
+    {
+        name:"Rahul",
+        age:23,
+        city:"Bangalore",
+        salary:35000
+    },
+    {
+        name:"Amith",
+        age:25,
+        city:"Delhi",
+        salary:40000
+    },
+    {
+        name:"Arya",
+        age:22,
+        city:"Kochi",
+        salary:32000
+    },
+    {
+        name:"Rekha",
+        age:26,
+        city:"Bangalore",
+        salary:35000
+    }
+];
+
+function display(superarray)
+{
+    let tabledata="";
+    // let employees;
+    superarray.forEach(function(employee,index)
+    {
+        let currentrow=`<tr>
+        <td>${index+1}</td>
+        <td>${employee.name}</td>
+        <td>${employee.age}</td>
+        <td>${employee.city}</td>
+        <td>${employee.salary}</td>
+        <td>
+            <button onclick='deleteEmployee(${index})'>Delete</button>
+            </td>
+        </tr>`;
+        tabledata += currentrow;
+    })
+    document.getElementById('tdata').innerHTML=tabledata;
+
+}
+
+display(employees);
+
+function searchbyname()
+{
+    let searchvalue=document.getElementById("searchbyname").value;
+    let newdata=employees.filter(function(employee){
+        return (employee.name.toUpperCase().indexOf(searchvalue.toUpperCase())!=-1)
+    })
+    display(newdata)
+    
+}
+function searchbycity()
+{
+    let searchvalue=document.getElementById("searchbycity").value;
+    let newdata=employees.filter(function(employee){
+        return (employee.city.toUpperCase().indexOf(searchvalue.toUpperCase())!=-1)
+    })
+    display(newdata)
+}
+
+function deleteEmployee(index)
+{
+    employees.splice(index,1);
+    display(employees);
+}
+
+
+
+
+
+*************************************QUESTION-2********************************************
+-------------------------------------HTML-CODE-2-------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        .data{
+            height: 500px;
+            width: 80%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin-left: 10%;
+            margin-top: 50px;
+            padding: 20px;
+            display: inline-block;
+        }
+        .table{
+            width: 100%;
+            margin-top: 20px;
+        }
+        th,td{
+            height:40px ;
+            text-align: center;
+            padding: 10px;
+        }
+        th{
+            background-color: rgb(80, 136, 240);
+        }
+        button{
+            padding: 5px;
+        }
+        h1{
+            background:#255cf3;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+        .form{
+            padding: 10px;
+        }
+        input{
+            border-width: 5px;
+            border-color: rgb(32, 106, 241);
+            height: 10px;
+            text-indent: 20px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="data">
+        <h1>Bus Details</h1>
+        <div>
+            <input 
+            type="text"
+            placeholder="Search by Source"
+            onclick="searchBySource()"
+            id="searchBySource">
+            <input 
+            type="text"
+            placeholder="Search by Destination"
+            onclick="searchByDestination()"
+            id="searchByDestination">
+            <br>
+
+        </div>
+        
+        <div class="form">
+            <form onsubmit="addBus(event)">
+                <input type="text" required placeholder=" Bus Name" id="name">
+                    <input type="text" required placeholder="Source" id="source">
+                    <br>
+                    <input type="text" required placeholder="Destination" id="destination">
+                    <input type="number" required placeholder="Bus No." id="height">
+                    <br>
+                    <input type="number" required placeholder="Capacity" id="capacity">
+                    <button type="submit">Add Bus</button>
+            </form>
+        </div>
+
+        <table border="1" class="table" cellspacing=0>
+            <thead>
+                <tr>
+                    <th>Sl no.</th>
+                    <th>Bus Name</th>
+                    <th>Source</th>
+                    <th>Destination</th>
+                    <th>Bus No.</th>
+                    <th>Capacity</th>
+                </tr>
+            </thead>
+            <tbody id="tdata">
+
+            </tbody>
+        </table>
+    </div>
+    <script src="q2.js"></script>
+</body>
+</html>
+
+------------------------------------------JS CODE-2-----------------------------------------
+let busses=[
+    {
+        name:"",
+        source:"",
+        destination:"",
+        number:undefined,
+        capacity:undefined
+
+    },
+];
+
+function display(superarray=undefined)
+{
+    let tabledata="";
+    let b;
+    if (superarray==undefined)
+    {
+        b=JSON.parse(localStorage.getItem("b"));
+    }
+    else{
+        b=superarray;
+    }
+
+    busses.forEach(function(b,index)
+    {
+        let currentrow=`<tr>
+        <td>${index+1}</td>
+        <td>${b.name}</td>
+        <td>${b.age}</td>
+        <td>${b.planet}</td>
+        <td>${b.height}</td>
+        </tr>`;
+        tabledata += currentrow;
+
+    })
+
+    // document.getElementsByClassName('tdata')[0].innerHTML = tabledata;
+    document.getElementById('tdata').innerHTML=tabledata;
+
+}
+
+display();
+
+function addBus(b)
+{   b.preventDefault();
+    let bus={};
+    let name=document.getElementById('name').value;
+    let source=document.getElementById('source').value;
+    let destination=document.getElementById('destination').value;
+    let number=document.getElementById('number').value;
+    let capacity=document.getElementById('capacity').value;
+    bus.name=name;
+    bus.source=source;
+    bus.destination=destination;
+    bus.number=Number(number);
+    bus.capacity=Number(capacity);
+
+    let busses=JSON.parse(localStorage.getItem("busses"));
+    busses.push(bus);
+    localStorage.setItem("busses",JSON.stringify(busses));
+
+    display();
+    document.getElementById('name').value;
+    document.getElementById('source').value;
+    document.getElementById('destination').value;
+    document.getElementById('number').value;
+    document.getElementById('capacity').value
+}
+console.log(busses)
+
+function searchBySource()
+{
+    let searchvalue=document.getElementById("searchBySource").value;
+    let newdata=busses.filter(function(bus){
+        return (bus.source.toUpperCase().indexOf(searchvalue.toUpperCase())!=-1)
+    })
+    display(newdata)
+    
+}
+function searchByDestination()
+{
+    let searchvalue=document.getElementById("searchByDestination").value;
+    let newdata=busses.filter(function(bus){
+        return (bus.destination.toUpperCase().indexOf(searchvalue.toUpperCase())!=-1)
+    })
+    display(newdata)
+}
